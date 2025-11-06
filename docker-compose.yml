@@ -1,0 +1,21 @@
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./botdata:/home/node/app
+      - ./botdata/node_modules:/home/node/app/node_modules
+    networks:
+      - app-network
+
+volumes:
+  botdata:
+  node_modules:
+
+networks:
+  app-network:
