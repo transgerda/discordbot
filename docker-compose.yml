@@ -4,14 +4,17 @@ services:
       context: .
       dockerfile: Dockerfile
     image: nodejs
-    container_name: nodejs
+    container_name: discordbot
     restart: unless-stopped
-    env_file: .env
-    volumes:
-      - ./botdata:/home/node/app
-      - ./botdata/node_modules:/home/node/app/node_modules
+    env_file: ./botdata/.env
+    #volumes:
+    #- ./botdata:/home/node/app
+    #- ./botdata/node_modules:/home/node/app/node_modules
     networks:
       - app-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
 
 volumes:
   botdata:

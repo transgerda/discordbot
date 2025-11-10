@@ -6,8 +6,10 @@ module.exports = (client) => {
   cron.schedule('0 8 * * *', async () => {
     const channel = client.channels.cache.get('1415766287510147133');
     if (channel) {
-      exec('fortune -s', (error, stdout, stderr) => {
+      exec('/usr/games/fortune -s', (error, stdout, stderr) => {
         if (error) {
+          console.error(`Exec error: ${error}`);
+          console.error(`Stderr: ${stderr}`);
           channel.send('Error fetching fortune.');
           return;
         }

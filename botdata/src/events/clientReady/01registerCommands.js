@@ -8,9 +8,7 @@ module.exports = async (client) => {
     const localCommands = getLocalCommands();
     const applicationCommands = await getApplicationCommands(
       client,
-      testServer
     );
-      console.log('yusu');
 
     for (const localCommand of localCommands) {
       const { name, description, options } = localCommand;
